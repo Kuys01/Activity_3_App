@@ -1,44 +1,31 @@
-import { View, StyleSheet, SafeAreaView, Image, Text } from "react-native";
+import { View, StyleSheet, SafeAreaView, Image, Text, ImageBackground } from "react-native";
 import React from "react";
 import { Button } from "react-native-paper";
   
   export default function Home({ navigation }) {
-    const logouri =  require('../../media/logo.jpg')
+    const logouri =  require('../../media/me.png')
     const loginIcon = require('../../media/loginicon.png');
 
     const GifComponent = () => {
         return (
           <View style={styles.container}>
-            <Image
-              source={require('../../media/giphy.gif')}
-              style={styles.gif}
-            />
           </View>
         );
       };
 
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.contentHeader}>
-            <Text style={styles.title}>
-              Welcome to the{"\n"}
-              <View style={styles.appName}>
-                <Text style={styles.appNameText}>Dab</Text>
-              </View>
-            </Text>
-          </View>
-
         <View style={styles.hero}>
-          <Image
+          <ImageBackground
             source={logouri}
             style={styles.heroImage}
-            resizeMode="contain"
+            resizeMode="cover"
           />
         </View>
         <View style={styles.content}>
         <GifComponent />
         </View>
-        <Button style={{width: "100%", height: 40, }}  onPress={() => navigation.navigate("Login")}>Logout</Button>
+        <Button style={styles.button}  onPress={() => navigation.navigate("Login")}>Logout</Button>
       </SafeAreaView>
     );
   }
@@ -49,10 +36,12 @@ const styles = StyleSheet.create({
     },
     hero: {
       backgroundColor: '#d8dffe',
-      margin: 12,
+      margin: 0,
       borderRadius: 16,
       padding: 16,
-      height: "20%"
+      height: "80%",
+      width: "100%",
+      justifyContent: "center"
     },
     heroImage: {
       width: '100%',
@@ -89,12 +78,12 @@ const styles = StyleSheet.create({
     appNameText: {
       fontSize: 32,
       fontWeight: '700',
-      color: '#281b52',
+      color: 'black',
       textAlign : "justify"
     },
     button: {
         flexDirection: 'row',
-        backgroundColor: '#56409e',
+        backgroundColor: '#deb887',
         paddingVertical: 15,
         paddingHorizontal: 15,
         alignItems: 'center',

@@ -5,7 +5,7 @@ import { Button, Text, TextInput } from "react-native-paper";
 export default function Recover({ navigation }) {
 
   const [showPass, setShowPass] = React.useState(false);
-  const logouri =  require('../../media/logo.jpg')
+  const logouri =  require('../../media/meme.png')
   const loginIcon = require('../../media/loginicon.png');
   const signupIcon = require('../../media/signupicon.png');
 
@@ -33,17 +33,16 @@ export default function Recover({ navigation }) {
 
       <TextInput
         mode="outlined"
-        placeholder="6-Digit OTP"
-        label="OTP"
+        placeholder="******"
+        label="Password"
         style={{ marginTop: 20 , bottom: 20}}
         error={false}
       />
-      <Text style={{textAlign: "center", bottom: 15}}>Kindly input the 6 digit OTP generated to your email.</Text>
       <Button style={styles.button} onPress={() => navigation.navigate("")}>
       <Text style={styles.buttonText}>Enter</Text>
       </Button>
 
-      <Button style={styles.button} onPress={() => navigation.pop()}>
+      <Button onPress={() => navigation.pop()}>
       <Text style={styles.buttonText}>Go Back</Text>
       </Button>
       </View>
@@ -77,11 +76,11 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 15,
-    color: '#fff',
+    color: 'black',
   },
   button: {
       flexDirection: 'row',
-      backgroundColor: '#56409e',
+      backgroundColor: '#deb887',
       paddingVertical: 5,
       paddingHorizontal: 5,
       alignItems: 'center',

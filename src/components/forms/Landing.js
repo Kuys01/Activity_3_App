@@ -1,27 +1,23 @@
-import { View, StyleSheet, SafeAreaView, Image, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, SafeAreaView, Image, Text, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
   
   export default function Landing({ navigation }) {
-    const logouri =  require('../../media/logo.jpg')
+    const bg =  require('../../media/me.png')
     const loginIcon = require('../../media/loginicon.png');
     const signupIcon = require('../../media/signupicon.png');
 
     return (
+
       <SafeAreaView style={styles.container}>
-        <View style={styles.hero}>
-          <Image
-            source={logouri}
-            style={styles.heroImage}
-            resizeMode="contain"
-          />
-        </View>
+        <ImageBackground
+        source={bg}
+        style={styles.image}
+        resizeMode="cover"
+      >
         <View style={styles.content}>
           <View style={styles.contentHeader}>
-            <Text style={styles.title}>
-              Welcome to the
-              <View style={styles.appName}>
-                <Text style={styles.appNameText}>Dab</Text>
-              </View>
+            <Text style={styles.title2}>
+              Wonderland
             </Text>
           </View>
   
@@ -43,6 +39,7 @@ import React from "react";
             </View>
           </TouchableOpacity>
         </View>
+        </ImageBackground>
       </SafeAreaView>
     );
   }
@@ -51,17 +48,10 @@ import React from "react";
     container: {
       flex: 1,
     },
-    hero: {
-      backgroundColor: '#d8dffe',
-      margin: 12,
-      borderRadius: 16,
-      padding: 16,
-      height: "50%"
-    },
-    heroImage: {
+    image: {
+      justifyContent: 'center',
       width: '100%',
-      borderRadius: 10,
-      height: "100%"
+      height: '100%',
     },
     content: {
       flex: 1,
@@ -75,26 +65,19 @@ import React from "react";
     title: {
       fontSize: 28,
       fontWeight: '500',
-      color: '#281b52',
+      color: '#fff0f5',
       textAlign: 'center',
       marginBottom: 12,
-      lineHeight: 40,
+      lineHeight: 80,
     },
-    appName: {
-      backgroundColor: '#C495F0',
-      borderRadius: 50,
-      transform: [
-        {
-          rotate: '-20deg',
-        },
-      ],
-      paddingHorizontal: 6,
-    },
-    appNameText: {
-      fontSize: 32,
-      fontWeight: '700',
-      color: '#281b52',
-      textAlign : "justify"
+    title2: {
+      fontStyle: 'italic',
+      fontSize: 20,
+      fontWeight: '500',
+      color: '#8b4513',
+      textAlign: 'center',
+      marginTop: 0,
+      lineHeight: 450,
     },
     text: {
       fontSize: 15,
@@ -110,13 +93,13 @@ import React from "react";
     },
     button: {
         flexDirection: 'row',
-        backgroundColor: '#56409e',
+        backgroundColor: '#deb887',
         paddingVertical: 15,
         paddingHorizontal: 15,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 12,
-        marginBottom: 20,
+        marginBottom: 30,
       },
       icon: {
         width: 10,

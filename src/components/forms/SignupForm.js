@@ -1,11 +1,59 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ToastAndroid} from "react-native";
 import React from "react";
 import { Button, Text, TextInput } from "react-native-paper";
+import fetchServices from "../services/fetchServices";
 
 export default function LoginForm({ navigation }) {
 
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [repassword, setRepassword] = React.useState("");
   const [showPass, setShowPass] = React.useState(false);
-  const logouri =  require('../../media/logo.jpg')
+  const [showRePass, setShowRePass] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
+  const logouri =  require('../../media/meme.png')
+
+  const showToast = (message = "Something wen't wrong") => {
+    ToastAndroid.show(message, 3000);
+  };
+  const handleRegistration = async () => {
+    try {
+      setLoading(true);
+
+      if (name === "" || email === "" || password === "" || repassword === "") {
+        showToast("Please input required data");
+        setIsError(true);
+        return false;
+      }
+
+      if(password === '' != repassword === ''){
+        showToast("Please match password");
+        setIsError(true);
+        return false;
+      }
+
+      const url = "http://192.168.56.1:8000/api/v1/register";
+      const data = {
+        name,
+        email,
+        password,
+        password_confirmation: repassword,
+      };
+ 
+
+      const result = await fetchServices.postData(url, data);
+      console.debug(result);
+      if (result?.message != null) {
+        showToast(result?.message);
+      } else {
+        navigation.navigate("Login");
+      }
+    } catch (e) {  
+      showToast(e.toString());
+    } 
+  };
 
   return (
     <View styles={{ flex: 1 }}>
@@ -16,47 +64,81 @@ export default function LoginForm({ navigation }) {
             resizeMode="contain"
           />
         </View>
-      <Text variant="displayMedium" style={{textAlign: "center", fontSize: 30, bottom: 20, color: "#3a2740"}}>Create an Account</Text>
+      <Text variant="displayMedium">Register</Text>
       <TextInput
         mode="outlined"
-        placeholder="Username"
-        label="Username"
-        style={{ marginTop: 10 , bottom: 20}}
-        error={false}
+        placeholder="Name"
+        label="Name"
+        style={{ marginTop: 10 }}
+        value={name}
+        onChangeText={setName}
+        error={isError}
       />
       <TextInput
         mode="outlined"
         placeholder="Email"
         label="Email"
-        style={{ marginTop: 10 , bottom: 20}}
-        error={false}
+        style={{ marginTop: 10 }}
+        value={email}
+        onChangeText={setEmail}
+        error={isError}
       />
       <TextInput
         mode="outlined"
         placeholder="Password"
         label="Password"
-        secureTextEntry={showPass}
-        style={{ marginTop: 10, bottom: 20 }}
+        secureTextEntry={!showPass}
+        right={
+      <TextInput.Icon
+            icon={showPass ? "eye" : "eye-off"}
+            onPress={() => setShowPass(!showPass)}
+          />
+        }
+        style={{ marginTop: 10 }}
+        value={password}
+        onChangeText={setPassword}
+        error={isError}
       />
       <TextInput
         mode="outlined"
-        placeholder="Retype Password"
-        label="Retype Password"
-        secureTextEntry={showPass}
-        style={{ marginTop: 10, bottom: 20 }}
+        placeholder="Re-type Password"
+        label="Re-type Password"
+        secureTextEntry={!showRePass}
+        right={
+          <TextInput.Icon
+            icon={showPass ? "eye" : "eye-off"}
+            onPress={() => setShowRePass(!showRePass)}
+          />
+        }
+        style={{ marginTop: 10 }}
+        value={repassword}
+        onChangeText={setRepassword}
+        error={isError}
       />
-      <View style={{bottom: 10}}>
-      <Button style={styles.button} onPress={() => navigation.navigate("")}>
-        <Text style={styles.buttonText}>Register</Text>
+      <Button
+        // disabled={loading}
+        // loading={loading}
+        icon="account-plus"
+        mode="contained"
+        style={{ marginTop: 10, backgroundColor:'#deb887' }}
+        onPress={handleRegistration}
+      >
+        
+        Register
       </Button>
-
-      <Button style={styles.button} onPress={() => navigation.pop()}>
-      <Text style={styles.buttonText}>Go Back</Text>
+      <Button
+        disabled={loading}
+        onPress={() => navigation.pop()}
+        icon="arrow-left"
+        mode="contained"
+        style={{ marginTop: 10, backgroundColor:'#deb887' }}
+      >
+        Go Back
       </Button>
-      </View>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -84,11 +166,11 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 15,
-    color: '#fff',
+    color: 'black',
   },
   button: {
       flexDirection: 'row',
-      backgroundColor: '#56409e',
+      backgroundColor: '#deb887',
       paddingVertical: 5,
       paddingHorizontal: 5,
       alignItems: 'center',
