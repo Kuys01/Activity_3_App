@@ -2,7 +2,7 @@ import { View, StyleSheet, SafeAreaView, Image, Text, TouchableOpacity, ImageBac
 import React from "react";
   
   export default function Landing({ navigation }) {
-    const bg =  require('../../media/me.png')
+    const bg =  require('../../media/logo.png')
     const loginIcon = require('../../media/loginicon.png');
     const signupIcon = require('../../media/signupicon.png');
 
@@ -17,7 +17,7 @@ import React from "react";
         <View style={styles.content}>
           <View style={styles.contentHeader}>
             <Text style={styles.title2}>
-              Wonderland
+              Jannyf
             </Text>
           </View>
   
@@ -25,7 +25,7 @@ import React from "react";
             onPress={() => {navigation.navigate("Login")
             }}>
             <View style={styles.button}>
-                <Image source={loginIcon} style={styles.icon} />
+                
                 <Text style={styles.buttonText}>Login</Text>
             </View>
           </TouchableOpacity>
@@ -34,7 +34,7 @@ import React from "react";
             onPress={() => {navigation.navigate("Register")
             }}>
             <View style={styles.button}>
-                <Image source={signupIcon} style={styles.icon} />
+                
                 <Text style={styles.buttonText}>Register</Text>
             </View>
           </TouchableOpacity>
@@ -49,14 +49,13 @@ import React from "react";
       flex: 1,
     },
     image: {
-      justifyContent: 'center',
-      width: '100%',
-      height: '100%',
+      justifyContent: 'center',     
+      height: '80%',
     },
     content: {
       flex: 1,
       justifyContent: 'space-between',
-      paddingVertical: 24,
+      paddingVertical: 120,
       paddingHorizontal: 24,
     },
     contentHeader: {
@@ -89,16 +88,16 @@ import React from "react";
     buttonText: {
       fontSize: 20,
       fontWeight: '500',
-      color: '#fff',
+      color: 'white',
     },
     button: {
         flexDirection: 'row',
-        backgroundColor: '#deb887',
+        backgroundColor: '#B11E1E',
         paddingVertical: 15,
         paddingHorizontal: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 12,
+        borderRadius: 30,
         marginBottom: 30,
       },
       icon: {

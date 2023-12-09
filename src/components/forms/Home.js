@@ -3,8 +3,8 @@ import React from "react";
 import { Button } from "react-native-paper";
   
   export default function Home({ navigation }) {
-    const logouri =  require('../../media/me.png')
-    const loginIcon = require('../../media/loginicon.png');
+    const logouri =  require('../../media/logo.png')
+    
 
     const GifComponent = () => {
         return (

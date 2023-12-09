@@ -13,7 +13,7 @@ export default function LoginForm({ navigation }) {
   const [showRePass, setShowRePass] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
-  const logouri =  require('../../media/meme.png')
+  const logouri =  require('../../media/logo.png')
 
   const showToast = (message = "Something wen't wrong") => {
     ToastAndroid.show(message, 3000);
@@ -34,7 +34,7 @@ export default function LoginForm({ navigation }) {
         return false;
       }
 
-      const url = "http://192.168.56.1:8000/api/v1/register";
+      const url = "http://192.168.68.140:8000/api/v1/register";
       const data = {
         name,
         email,
@@ -64,7 +64,9 @@ export default function LoginForm({ navigation }) {
             resizeMode="contain"
           />
         </View>
-      <Text variant="displayMedium">Register</Text>
+        
+      <Text style={{fontSize: 50}} variant="displayMedium">Register</Text>
+
       <TextInput
         mode="outlined"
         placeholder="Name"
@@ -120,7 +122,7 @@ export default function LoginForm({ navigation }) {
         // loading={loading}
         icon="account-plus"
         mode="contained"
-        style={{ marginTop: 10, backgroundColor:'#deb887' }}
+        style={{ marginTop: 10, backgroundColor:'#B11E1E' }}
         onPress={handleRegistration}
       >
         
@@ -131,9 +133,9 @@ export default function LoginForm({ navigation }) {
         onPress={() => navigation.pop()}
         icon="arrow-left"
         mode="contained"
-        style={{ marginTop: 10, backgroundColor:'#deb887' }}
+        style={{ marginTop: 10, backgroundColor:'#B11E1E' }}
       >
-        Go Back
+         Back
       </Button>
     </View>
   );
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   hero: {
-    backgroundColor: '#d8dffe',
+   
     margin: 1,
     borderRadius: 16,
     padding: 10,

@@ -7,7 +7,7 @@ import { Formik } from "formik";
 
 export default function LoginForm({ navigation }) {
   const [showPass, setShowPass] = React.useState(false);
-  const logouri =  require('../../media/meme.png')
+  const logouri =  require('../../media/logo.png')
   const showToast = (message = "Something wen't wrong") => {
     ToastAndroid.show(message, 3000);
   };
@@ -15,7 +15,7 @@ export default function LoginForm({ navigation }) {
   const handleLogin = async (values) => {
     try { 
       console.debug('submit');
-      const url = "http://192.168.56.1:8000/api/v1/login";
+      const url = "http://192.168.68.140:8000/api/v1/login";
       const result = await fetchServices.postData(url, values);
 
       if (result.message != null) {
@@ -113,7 +113,7 @@ export default function LoginForm({ navigation }) {
                onPress={handleSubmit}
                icon="login"
                mode="contained"
-               style={{ marginTop: 10, backgroundColor:'#deb887' }}
+               style={{ marginTop: 10, backgroundColor:'#B11E1E' }}
               >
             Login
               </Button>
@@ -122,7 +122,7 @@ export default function LoginForm({ navigation }) {
                 onPress={() => navigation.navigate("Register")}
                 icon="account-plus"
                 mode="contained"
-                style={{ marginTop: 10, backgroundColor:'#deb887' }}
+                style={{ marginTop: 10, backgroundColor:'#B11E1E' }}
               >
                       Register
                     </Button>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   hero: {
-    backgroundColor: '#d8dffe',
+    
     margin: 1,
     borderRadius: 16,
     padding: 10,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 5,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: 12,
+      borderRadius: 30,
       margin: 10,
     },
   fade:{

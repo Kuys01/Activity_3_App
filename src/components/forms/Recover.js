@@ -5,7 +5,7 @@ import { Button, Text, TextInput } from "react-native-paper";
 export default function Recover({ navigation }) {
 
   const [showPass, setShowPass] = React.useState(false);
-  const logouri =  require('../../media/meme.png')
+  const logouri =  require('../../media/logo.png')
   const loginIcon = require('../../media/loginicon.png');
   const signupIcon = require('../../media/signupicon.png');
 
